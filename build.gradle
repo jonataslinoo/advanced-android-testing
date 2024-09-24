@@ -1,12 +1,12 @@
 buildscript {
-    ext.kotlinVersion = '1.5.31'
-    ext.navigationVersion = '2.3.5'
+    ext.kotlinVersion = '1.9.0'
+    ext.navigationVersion = '2.5.0'
     repositories {
         google()
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.0.3'
+        classpath 'com.android.tools.build:gradle:8.6.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$navigationVersion"
 
@@ -26,8 +26,8 @@ allprojects {
 ext {
     // Sdk and tools
     minSdkVersion = 21
-    targetSdkVersion = 31
-    compileSdkVersion = 31
+    targetSdkVersion = 33
+    compileSdkVersion = 33
 
     // App dependencies
     androidXVersion = '1.0.0'
@@ -40,12 +40,12 @@ ext {
     coroutinesVersion = '1.5.2'
     cardVersion = '1.0.0'
     espressoVersion = '3.4.0'
-    fragmentKtxVersion = '1.4.0'
+    fragmentKtxVersion = '1.8.3'
     junitVersion = '4.13.2'
     materialVersion = '1.4.0'
     recyclerViewVersion = '1.2.1'
     roomVersion = '2.3.0'
     rulesVersion = '1.0.1'
     swipeRefreshLayoutVersion = '1.1.0'
-    timberVersion = '4.7.1'
+    timberVersion = '5.0.1'
 }
