@@ -49,7 +49,6 @@ dependencies {
     implementation 'androidx.annotation:annotation:1.8.2'
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.9.0"
     implementation "com.jakewharton.timber:timber:4.7.1"
-    testImplementation 'androidx.arch.core:core-testing:2.2.0'
 
     // Architecture Components
     kapt 'androidx.room:room-compiler:2.6.1'
@@ -69,6 +68,7 @@ dependencies {
     testImplementation 'org.robolectric:robolectric:4.13'
     testImplementation "androidx.test:core-ktx:$androidXTestCoreVersion"
     testImplementation "androidx.test.ext:junit-ktx:$androidXTestExtKotlinRunnerVersion"
+    testImplementation 'androidx.arch.core:core-testing:2.2.0'
 
     // AndroidX Test - Instrumented testing
     androidTestImplementation "androidx.test.ext:junit:1.2.1"
