@@ -28,6 +28,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.android.architecture.blueprints.todoapp.EventObserver
 import com.example.android.architecture.blueprints.todoapp.R
+import com.example.android.architecture.blueprints.todoapp.TodoApplication
 import com.example.android.architecture.blueprints.todoapp.databinding.TaskdetailFragBinding
 import com.example.android.architecture.blueprints.todoapp.tasks.DELETE_RESULT_OK
 import com.example.android.architecture.blueprints.todoapp.util.setupRefreshLayout
@@ -42,7 +43,11 @@ class TaskDetailFragment : Fragment() {
 
     private val args: TaskDetailFragmentArgs by navArgs()
 
-    private val viewModel by viewModels<TaskDetailViewModel>()
+    private val viewModel by viewModels<TaskDetailViewModel> {
+        val tasksRepository =
+            (requireContext().applicationContext as TodoApplication).tasksRepository
+        TaskDetailViewModelFactory(tasksRepository)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         setupFab()
@@ -96,6 +101,7 @@ class TaskDetailFragment : Fragment() {
                 viewModel.deleteTask()
                 true
             }
+
             else -> false
         }
     }

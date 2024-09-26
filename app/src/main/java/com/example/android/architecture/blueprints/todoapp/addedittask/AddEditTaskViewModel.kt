@@ -16,23 +16,23 @@
 
 package com.example.android.architecture.blueprints.todoapp.addedittask
 
-import android.app.Application
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewModelScope
 import com.example.android.architecture.blueprints.todoapp.Event
 import com.example.android.architecture.blueprints.todoapp.R
 import com.example.android.architecture.blueprints.todoapp.data.Result.Success
 import com.example.android.architecture.blueprints.todoapp.data.Task
-import com.example.android.architecture.blueprints.todoapp.data.source.DefaultTasksRepository
+import com.example.android.architecture.blueprints.todoapp.data.source.TasksRepository
 import kotlinx.coroutines.launch
+
 
 /**
  * ViewModel for the Add/Edit screen.
  */
-class AddEditTaskViewModel(application: Application) : AndroidViewModel(application) {
-
-    // Note, for testing and architecture purposes, it's bad practice to construct the repository
-    // here. We'll show you how to fix this during the codelab
-    private val tasksRepository = DefaultTasksRepository.getRepository(application)
+class AddEditTaskViewModel(private val tasksRepository: TasksRepository) : ViewModel() {
 
     // Two-way databinding, exposing MutableLiveData
     val title = MutableLiveData<String>()
@@ -41,14 +41,14 @@ class AddEditTaskViewModel(application: Application) : AndroidViewModel(applicat
     val description = MutableLiveData<String>()
 
     private val _dataLoading = MutableLiveData<Boolean>()
+
     val dataLoading: LiveData<Boolean> = _dataLoading
-
     private val _snackbarText = MutableLiveData<Event<Int>>()
+
     val snackbarText: LiveData<Event<Int>> = _snackbarText
-
     private val _taskUpdatedEvent = MutableLiveData<Event<Unit>>()
-    val taskUpdatedEvent: LiveData<Event<Unit>> = _taskUpdatedEvent
 
+    val taskUpdatedEvent: LiveData<Event<Unit>> = _taskUpdatedEvent
     private var taskId: String? = null
 
     private var isNewTask: Boolean = false
@@ -135,5 +135,14 @@ class AddEditTaskViewModel(application: Application) : AndroidViewModel(applicat
             tasksRepository.saveTask(task)
             _taskUpdatedEvent.value = Event(Unit)
         }
+    }
+
+}
+
+@Suppress("UNCHECKED_CAST")
+class AddEditTaskViewModelFactory(private val tasksRepository: TasksRepository) :
+    ViewModelProvider.NewInstanceFactory() {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+        return AddEditTaskViewModel(tasksRepository) as T
     }
 }
