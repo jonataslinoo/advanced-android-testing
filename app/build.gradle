@@ -49,6 +49,7 @@ dependencies {
     implementation 'androidx.annotation:annotation:1.8.2'
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.9.0"
     implementation "com.jakewharton.timber:timber:4.7.1"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$kotlinVersion"
 
     // Architecture Components
     kapt 'androidx.room:room-compiler:2.6.1'
