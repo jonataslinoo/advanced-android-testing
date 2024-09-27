@@ -69,11 +69,12 @@ dependencies {
     testImplementation "androidx.test:core-ktx:$androidXTestCoreVersion"
     testImplementation "androidx.test.ext:junit-ktx:$androidXTestExtKotlinRunnerVersion"
     testImplementation 'androidx.arch.core:core-testing:2.2.0'
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$kotlinVersion"
 
     // AndroidX Test - Instrumented testing
     androidTestImplementation "androidx.test.ext:junit:1.2.1"
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.6.1'
-    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$kotlinVersion"
+    androidTestImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$kotlinVersion"
     androidTestImplementation "junit:junit:$junitVersion"
     androidTestImplementation "androidx.test:core:$androidXTestCoreVersion"
     androidTestImplementation "androidx.fragment:fragment-testing:$fragmentKtxVersion"
