@@ -79,6 +79,10 @@ dependencies {
     androidTestImplementation "androidx.test:core:$androidXTestCoreVersion"
     androidTestImplementation "androidx.fragment:fragment-testing:$fragmentKtxVersion"
     debugImplementation "androidx.fragment:fragment-testing-manifest:$fragmentKtxVersion"
+    androidTestImplementation "org.mockito:mockito-core:2.28.2"
+    androidTestImplementation "com.linkedin.dexmaker:dexmaker-mockito:2.28.4"
+    androidTestImplementation "androidx.test.espresso:espresso-contrib:3.6.1"
+
 
     // Kotlin
 //    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:2.0.20"
