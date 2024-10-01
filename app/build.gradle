@@ -57,8 +57,6 @@ dependencies {
     implementation 'androidx.room:room-ktx:2.6.1'
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.6"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.8.6"
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.6"
-    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.8.6"
     implementation "androidx.navigation:navigation-fragment-ktx:2.8.1"
     implementation "androidx.navigation:navigation-ui-ktx:2.8.1"
 
@@ -82,6 +80,7 @@ dependencies {
     androidTestImplementation "org.mockito:mockito-core:2.28.2"
     androidTestImplementation "com.linkedin.dexmaker:dexmaker-mockito:2.28.4"
     androidTestImplementation "androidx.test.espresso:espresso-contrib:3.6.1"
+    androidTestImplementation "androidx.arch.core:core-testing:2.2.0"
 
 
     // Kotlin
