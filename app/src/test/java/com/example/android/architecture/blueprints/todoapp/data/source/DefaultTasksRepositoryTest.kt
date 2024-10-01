@@ -1,5 +1,6 @@
 package com.example.android.architecture.blueprints.todoapp.data.source
 
+import com.example.android.architecture.blueprints.todoapp.MainCoroutineRule
 import com.example.android.architecture.blueprints.todoapp.data.Result.Success
 import com.example.android.architecture.blueprints.todoapp.data.Task
 import kotlinx.coroutines.Dispatchers
@@ -8,6 +9,7 @@ import kotlinx.coroutines.test.runTest
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.core.IsEqual
 import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
 
 @ExperimentalCoroutinesApi
@@ -25,6 +27,9 @@ class DefaultTasksRepositoryTest {
 
     private lateinit var tasksRepository: DefaultTasksRepository
 
+    @get:Rule
+    var coroutineRule = MainCoroutineRule()
+
     @Before
     fun createRepository() {
         tasksRemoteDataSource = FakeDataSource(remoteTasks.toMutableList())
@@ -34,7 +39,7 @@ class DefaultTasksRepositoryTest {
         tasksRepository = DefaultTasksRepository(
             tasksRemoteDataSource,
             tasksLocalDataSource,
-            Dispatchers.Unconfined
+            Dispatchers.Main
         )
     }
 
