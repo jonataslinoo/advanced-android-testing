@@ -35,7 +35,9 @@ android {
     // Always show the result of every unit test when running via command line, even if it passes.
     testOptions.unitTests {
         includeAndroidResources = true
+        returnDefaultValues = true
     }
+
     namespace 'com.example.android.architecture.blueprints.todoapp'
 }
 
@@ -59,6 +61,7 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.8.6"
     implementation "androidx.navigation:navigation-fragment-ktx:2.8.1"
     implementation "androidx.navigation:navigation-ui-ktx:2.8.1"
+    implementation "androidx.test.espresso:espresso-idling-resource:3.6.1"
 
     // Dependencies for local unit tests
     testImplementation "junit:junit:$junitVersion"
