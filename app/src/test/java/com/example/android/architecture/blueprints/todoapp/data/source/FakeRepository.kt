@@ -44,14 +44,6 @@ class FakeRepository : TasksRepository {
         return observableTask
     }
 
-    override suspend fun refreshTask(taskId: String) {
-        TODO("Not yet implemented")
-    }
-
-    override fun observeTask(taskId: String): LiveData<Result<Task>> {
-        TODO("Not yet implemented")
-    }
-
     override suspend fun getTask(taskId: String, forceUpdate: Boolean): Result<Task> {
         return if (shouldReturnError) {
             Error(Exception("Text Exception"))
@@ -62,11 +54,21 @@ class FakeRepository : TasksRepository {
         }
     }
 
-    override suspend fun saveTask(task: Task) {
+    override suspend fun completeTask(task: Task) {
+        val completedTask = task.copy(isCompleted = true)
+        tasksServiceData[task.id] = completedTask
+        refreshTasks()
+    }
+
+    override suspend fun refreshTask(taskId: String) {
         TODO("Not yet implemented")
     }
 
-    override suspend fun completeTask(task: Task) {
+    override fun observeTask(taskId: String): LiveData<Result<Task>> {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun saveTask(task: Task) {
         TODO("Not yet implemented")
     }
 

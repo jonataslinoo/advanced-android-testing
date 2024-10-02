@@ -39,6 +39,11 @@ import kotlinx.coroutines.launch
 
 class TasksViewModel(private val tasksRepository: TasksRepository) : ViewModel() {
 
+    private var currentFiltering = TasksFilterType.ALL_TASKS
+
+    // Not used at the moment
+    private val isDataLoadingError = MutableLiveData<Boolean>()
+
     private val _forceUpdate = MutableLiveData<Boolean>(false)
 
     private val _items: LiveData<List<Task>> = _forceUpdate.switchMap { forceUpdate ->
@@ -71,11 +76,6 @@ class TasksViewModel(private val tasksRepository: TasksRepository) : ViewModel()
 
     private val _snackbarText = MutableLiveData<Event<Int>>()
     val snackbarText: LiveData<Event<Int>> = _snackbarText
-
-    private var currentFiltering = TasksFilterType.ALL_TASKS
-
-    // Not used at the moment
-    private val isDataLoadingError = MutableLiveData<Boolean>()
 
     private val _openTaskEvent = MutableLiveData<Event<String>>()
     val openTaskEvent: LiveData<Event<String>> = _openTaskEvent
