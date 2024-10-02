@@ -45,7 +45,7 @@ interface TasksDao {
      * @return the task with taskId.
      */
     @Query("SELECT * FROM Tasks WHERE entryid = :taskId")
-    fun observeTaskById(taskId: String): LiveData<Task>
+    fun observeTaskById(taskId: String): LiveData<Task?>
 
     /**
      * Select all tasks from the tasks table.
